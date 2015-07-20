@@ -44,16 +44,16 @@ do
 
    else
 #Size: 2048x2308
-     convert $file -crop +0+500\
-       -crop -0-500\
+     convert $file -crop +0+800\
+       -crop -0-800\
        -pointsize 40 -fill orange\
-       -annotate +10+580  "$f"\
-       -annotate +10+640  "$object"\
-       -annotate +10+700  "$slit"\
-       -annotate +10+760  "di: $dich"\
-       -annotate +10+820  "gr: $grat"\
-       -annotate +10+880 "$trpd $expt sec"\
-       -annotate +10+940 "type: $otype" $fout
+       -annotate +10+830  "$f"\
+       -annotate +10+890  "$object"\
+       -annotate +10+950  "$slit"\
+       -annotate +10+1010  "di: $dich"\
+       -annotate +10+1070  "gr: $grat"\
+       -annotate +10+1130 "$trpd $expt sec"\
+       -annotate +10+1190 "type: $otype" $fout
 
    fi
    echo $file $object $fout
