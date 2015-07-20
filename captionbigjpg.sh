@@ -25,19 +25,37 @@ do
   f2=$(echo "$f" | cut -d '.' -f 1)
   fout=$f2.jpg
    if [ -f $file ]; then
+
+    if [[ $f == r* ]]; then
+
 # call imagemagick
 #convert MyJpeg.jpg -print "Size: %wx%h\n" /dev/null
 #Size: 4168x688
-   convert $file -crop +2400+0\
-     -crop -400-0\
-     -pointsize 40 -fill orange\
-     -annotate +2410+80  "$f"\
-     -annotate +2410+140  "$object"\
-     -annotate +2410+200  "$slit"\
-     -annotate +2410+260  "di: $dich"\
-     -annotate +2410+320  "gr: $grat"\
-     -annotate +2410+380 "$trpd $expt sec"\
-     -annotate +2410+440 "type: $otype" $fout
+     convert $file -crop +2400+0\
+       -crop -400-0\
+       -pointsize 40 -fill orange\
+       -annotate +2410+80  "$f"\
+       -annotate +2410+140  "$object"\
+       -annotate +2410+200  "$slit"\
+       -annotate +2410+260  "di: $dich"\
+       -annotate +2410+320  "gr: $grat"\
+       -annotate +2410+380 "$trpd $expt sec"\
+       -annotate +2410+440 "type: $otype" $fout
+
+   else
+#Size: 2048x2308
+     convert $file -crop +0+500\
+       -crop -0-500\
+       -pointsize 40 -fill orange\
+       -annotate +10+580  "$f"\
+       -annotate +10+640  "$object"\
+       -annotate +10+700  "$slit"\
+       -annotate +10+760  "di: $dich"\
+       -annotate +10+820  "gr: $grat"\
+       -annotate +10+880 "$trpd $expt sec"\
+       -annotate +10+940 "type: $otype" $fout
+
+   fi
    echo $file $object $fout
    else
    echo $file does not exist
